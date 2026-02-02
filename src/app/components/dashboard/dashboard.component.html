@@ -1,0 +1,32 @@
+<div class="page-container" [class.dark-mode]="isDarkMode()">
+  
+  <!-- NUEVO: Fondo de Partículas -->
+  <canvas appParticleBg class="particle-canvas"></canvas>
+  
+  <div class="header-row">
+    <!-- Icono Bitcoin ... -->
+    <svg class="title-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.998 2C6.476 2 2 6.476 2 12C2 17.524 6.476 22 11.998 22C17.52 22 22 17.524 22 12C22 6.476 17.52 2 11.998 2ZM14.9903 15.8308C15.4605 15.6323 16.5 14.6757 16.5 13.2548C16.5 11.317 14.763 10.696 13.3645 10.2924V7.25H12.25V10.25H11.25V7.25H10V10.25H8.5V11.75H9.75C10.1981 11.75 10.5 12.013 10.5 12.5V16.5C10.5 16.881 10.332 17.25 9.75 17.25H8.5V18.75H10V21.75H11.25V18.75H12.25V21.75H13.3645V18.75C15.25 18.75 16.75 18.25 17.25 16.25C17.5 15 16.5 14.25 15.5 13.75C16.5 13.5 16.75 12.75 16.25 11.75L14.9903 15.8308Z" fill="#f7931a"/>
+    </svg>
+    
+    <h1 class="main-title">Criptos en Tiempo Real</h1>
+
+    <!-- Botón de Modo Oscuro ... -->
+    <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDarkMode() ? 'Activar modo claro' : 'Activar modo oscuro'">
+      <svg *ngIf="isDarkMode()" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg *ngIf="!isDarkMode()" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+  </div>
+
+  <div class="crypto-grid">
+    @for (item of assetsList(); track item.id) {
+      <app-crypto-card 
+        [data]="item" 
+        [threshold]="thresholds()[item.id] || 0"
+        (thresholdChange)="updateThreshold(item.id, $event)">
+      </app-crypto-card>
+    }
+  </div>
+
+  <p class="footer-text">Listado base con feed simulado y actualizaciones frecuentes.</p>
+</div>

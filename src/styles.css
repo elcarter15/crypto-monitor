@@ -1,0 +1,32 @@
+/* --- ESTILOS GLOBALES --- */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  /* IMPORTANTE: Fondo transparente para que se vea el Canvas detrás */
+  background: transparent !important; 
+}
+
+/* --- FONDO DE PARTÍCULAS (Canvas) --- */
+.particle-canvas {
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh;
+  z-index: -1; /* Detrás de todo */
+  pointer-events: none;
+  display: block !important;
+}
+
+/* --- CONTENEDOR PRINCIPAL (app-root) --- */
+app-root {
+  display: block;
+  position: relative;
+  z-index: 1; /* Encima del canvas */
+}
+
+/* --- MODO OSCURO --- */
+body.dark-mode {
+  background: transparent !important;
+  color: #f3f4f6;
+}

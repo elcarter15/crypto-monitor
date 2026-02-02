@@ -1,0 +1,264 @@
+/* --- Estilo Base --- */
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Estado de Alerta --- */
+.card.alert {
+  background-color: #fee2e2 !important; 
+  border-color: #ef4444 !important;
+  border-width: 2px !important;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+/* --- Header con Icono --- */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.crypto-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* Nombres --- */
+.coin-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.1;
+}
+
+.coin-symbol {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* --- Porcentaje --- */
+.change {
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.change.positive { 
+  color: #10b981; 
+  background-color: #ecfdf5;
+}
+
+.change.negative { 
+  color: #ef4444; 
+  background-color: #fef2f2;
+}
+
+/* --- Precio --- */
+.price-row {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+/* --- Control de Umbral --- */
+.threshold-control {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: #f9fafb;
+  border-radius: 6px;
+  border: 1px dashed #d1d5db;
+  text-align: center;
+}
+
+.threshold-control label {
+  display: block;
+  font-size: 0.7rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.threshold-control input {
+  width: 80%;
+  padding: 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bold;
+  color: #374151;
+}
+
+.threshold-control input:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+/* --- GRÁFICO SPARKLINE (Ajustado a 30px de alto) --- */
+.sparkline-container {
+  height: 30px; /* REDUCIDO de 50px a 30px */
+  width: 100%;
+  margin-bottom: 15px; /* Reducido margen para compactar */
+  position: relative;
+}
+
+.sparkline {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* --- Estadísticas --- */
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  color: #6b7280;
+  font-size: 0.9rem;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 15px;
+}
+
+.stat span {
+  color: #374151;
+  font-weight: 600;
+}
+
+/* --- Animaciones --- */
+.flash-green { animation: flashGreen 0.6s ease-out; }
+.flash-red { animation: flashRed 0.6s ease-out; }
+
+@keyframes flashGreen {
+  0% { background-color: #d1fae5; }
+  100% { background-color: #ffffff; }
+}
+
+@keyframes flashRed {
+  0% { background-color: #fee2e2; }
+  100% { background-color: #ffffff; }
+}
+
+.card.alert.flash-green { animation: flashGreenAlert 0.6s ease-out; }
+.card.alert.flash-red { animation: flashRedAlert 0.6s ease-out; }
+
+@keyframes flashGreenAlert {
+  0% { background-color: #d1fae5; }
+  100% { background-color: #fee2e2; }
+}
+
+@keyframes flashRedAlert {
+  0% { background-color: #fee2e2; }
+  100% { background-color: #fee2e2; }
+}
+
+/* --- Colores Tema --- */
+.card-theme-btc { border-top: 6px solid #f7931a !important; background: linear-gradient(180deg, #fff9f2 0%, #ffffff 100%); }
+.card-theme-btc .coin-symbol { color: #f7931a; }
+
+.card-theme-eth { border-top: 6px solid #627eea !important; background: linear-gradient(180deg, #f4f6ff 0%, #ffffff 100%); }
+.card-theme-eth .coin-symbol { color: #627eea; }
+
+.card-theme-sol { border-top: 6px solid #9945ff !important; background: linear-gradient(180deg, #fbf2ff 0%, #ffffff 100%); }
+.card-theme-sol .coin-symbol { color: #9945ff; }
+
+.card-theme-ada { border-top: 6px solid #0033ad !important; background: linear-gradient(180deg, #f2f4ff 0%, #ffffff 100%); }
+.card-theme-ada .coin-symbol { color: #0033ad; }
+
+.card-theme-dot { border-top: 6px solid #e6007a !important; background: linear-gradient(180deg, #fff2f8 0%, #ffffff 100%); }
+.card-theme-dot .coin-symbol { color: #e6007a; }
+
+/* =====================================================================
+   MODO OSCURO (DARK MODE)
+   ===================================================================== */
+
+.dark-mode .card {
+  background: #1f2937; 
+  border-color: #374151; 
+  color: #f3f4f6;
+}
+
+.dark-mode .coin-name { color: #f9fafb; }
+.dark-mode .coin-symbol { color: #9ca3af; }
+.dark-mode .price-row { color: #ffffff; }
+.dark-mode .stat { color: #9ca3af; }
+.dark-mode .stat span { color: #f3f4f6; }
+
+.dark-mode .stats-row {
+  border-top-color: #374151;
+}
+
+.dark-mode .threshold-control {
+  background: #111827;
+  border-color: #4b5563;
+}
+.dark-mode .threshold-control label {
+  color: #9ca3af;
+}
+.dark-mode .threshold-control input {
+  background: #1f2937;
+  border-color: #4b5563;
+  color: white;
+}
+
+.dark-mode .card.alert {
+  background-color: #450a0a; 
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
+}
+.dark-mode .card.alert.flash-green { animation: flashGreenAlertDark 0.6s ease-out; }
+.dark-mode .card.alert.flash-red { animation: flashRedAlertDark 0.6s ease-out; }
+
+@keyframes flashGreenAlertDark {
+  0% { background-color: #064e3b; }
+  100% { background-color: #450a0a; }
+}
+@keyframes flashRedAlertDark {
+  0% { background-color: #7f1d1d; }
+  100% { background-color: #450a0a; }
+}
+
+.dark-mode.card-theme-btc { border-top: 6px solid #f7931a !important; background: #1c1917 !important; }
+.dark-mode.card-theme-btc .coin-symbol { color: #f7931a; }
+
+.dark-mode.card-theme-eth { border-top: 6px solid #627eea !important; background: #1e1b4b !important; }
+.dark-mode.card-theme-eth .coin-symbol { color: #627eea; }
+
+.dark-mode.card-theme-sol { border-top: 6px solid #9945ff !important; background: #2e1065 !important; }
+.dark-mode.card-theme-sol .coin-symbol { color: #9945ff; }
+
+.dark-mode.card-theme-ada { border-top: 6px solid #0033ad !important; background: #172554 !important; }
+.dark-mode.card-theme-ada .coin-symbol { color: #3b82f6; }
+
+.dark-mode.card-theme-dot { border-top: 6px solid #e6007a !important; background: #500724 !important; }
+.dark-mode.card-theme-dot .coin-symbol { color: #e6007a; }

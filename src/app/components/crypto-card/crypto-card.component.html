@@ -1,0 +1,49 @@
+<div class="card" 
+     [class.alert]="isOverThreshold()" 
+     [ngClass]="'card-theme-' + data.symbol.toLowerCase()">
+  
+  <div class="card-header">
+    <div class="logo-wrapper">
+      <img [src]="data.image" [alt]="data.symbol" class="crypto-logo" />
+    </div>
+    <div class="header-left">
+      <div class="coin-name">{{ data.name }}</div>
+      <div class="coin-symbol">{{ data.symbol }}</div>
+    </div>
+    <span class="change" [class.positive]="getChangePercent() >= 0" [class.negative]="getChangePercent() < 0">
+      {{ getChangePercent() > 0 ? '+' : ''}}{{ getChangePercent() | number:'1.2' }}%
+    </span>
+  </div>
+
+  <div class="threshold-control">
+    <label>Umbral ($)</label>
+    <input type="number" [ngModel]="threshold" (ngModelChange)="thresholdChange.emit($event)" placeholder="0">
+  </div>
+
+  <div class="price-row" 
+       [appHighlightChange]="data.price" 
+       [previousPrice]="data.previousPrice">
+    {{ data.price | number:'1.2-2' }}
+  </div>
+
+  <!-- NUEVO: GRÁFICO SPARKLINE -->
+  <div class="sparkline-container">
+    <svg viewBox="0 0 100 50" preserveAspectRatio="none" class="sparkline">
+      <!-- Polilínea: La línea del gráfico -->
+      <polyline
+        [attr.points]="getSparklinePoints()"
+        [attr.stroke]="getTrendColor()"
+        fill="none"
+        stroke-width="3"
+        vector-effect="non-scaling-stroke"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat">MA(50): <span>{{ data.movingAverage | number:'1.2-2' }}</span></div>
+    <div class="stat">Vol: <span>{{ data.volatility | number:'1.4' }}</span></div>
+  </div>
+</div>
